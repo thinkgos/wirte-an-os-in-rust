@@ -1,11 +1,5 @@
-[workspace]
-resolver = "2"
-members = [
-    "post-01", "post-02",
-]
-# default-members = []
-
-[workspace.package]
+[package]
+name = "os"
 version = "0.1.0"
 authors = ["thinkgo <thinkgo@aliyun.com>"]
 edition = "2021"
@@ -19,9 +13,10 @@ readme = "README.md"
 homepage = "https://github.com/thinkgos/write-an-os-in-rust"
 repository = "https://github.com/thinkgos/write-an-os-in-rust"
 
-[workspace.dependencies]
+[dependencies]
+bootloader = "0.9"
 
-[workspace.lints.rust]
+[lints.rust]
 unsafe_code = "allow"
 # unused = "allow" # for experimental dev
 
