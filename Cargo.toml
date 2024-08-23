@@ -1,5 +1,5 @@
 [package]
-name = "os"
+name = "blog_os"
 version = "0.1.0"
 authors = ["thinkgo <thinkgo@aliyun.com>"]
 edition = "2021"
@@ -18,6 +18,8 @@ bootloader = "0.9"
 volatile = "0.2"
 lazy_static = {version= "1", features = ["spin_no_std"]}
 spin = "0.9"
+x86_64 = "0.15"
+uart_16550 = "0.3"
 
 [lints.rust]
 unsafe_code = "allow"
@@ -27,7 +29,7 @@ unsafe_code = "allow"
 opt-level = "z"
 
 [profile.dev]
-panic = "abort"
+# panic = "abort"
 
 [profile.release]
 panic = "abort"
@@ -35,3 +37,12 @@ opt-level = "z"
 strip = true
 lto = true
 codegen-units = 1
+
+[package.metadata.bootimage]
+test-timeout = 300  # (in seconds)
+test-args = [
+    "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04",
+    "-serial", "stdio",  
+    "-display", "none",
+]
+test-success-exit-code = 33         # (0x10 << 1) | 1
