@@ -15,6 +15,9 @@ repository = "https://github.com/thinkgos/write-an-os-in-rust"
 
 [dependencies]
 bootloader = "0.9"
+volatile = "0.2"
+lazy_static = {version= "1", features = ["spin_no_std"]}
+spin = "0.9"
 
 [lints.rust]
 unsafe_code = "allow"
